@@ -184,6 +184,9 @@ local alphabeticKeyboardLayout(addSemicolon = false) = {
             Cell: params.keyboard.numericButton.name,
           },
           {
+            Cell: params.keyboard.numpadButton.name,
+          },
+          {
             Cell: params.keyboard.commaButton.name,
           },
           {
@@ -850,9 +853,19 @@ local newKeyLayout(isDark=false, isPortrait=true, addSemicolon=true) =
     isDark,
     {
       size:
-        { width: { percentage: 0.2 } },
+        { width: { percentage: 0.1 } },
     }
     + params.keyboard.numericButton.params
+  )
+
+  + basicStyle.newSystemButton(
+    params.keyboard.numpadButton.name,
+    isDark,
+    {
+      size:
+        { width: { percentage: 0.1 } },
+    }
+    + params.keyboard.numpadButton.params
   )
 
 

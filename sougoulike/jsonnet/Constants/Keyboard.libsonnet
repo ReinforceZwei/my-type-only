@@ -513,8 +513,16 @@ local fonts = import 'Fonts.libsonnet';
       name: 'numericButton',
       params: {
         action: { keyboardType: 'numeric' },
-        text: '123',
+        text: '符',
       },
+    },
+
+    numpadButton: {
+      name: 'numpadButton',
+      params: {
+        action: { keyboardType: 'numpad' },
+        text: '123',
+      }
     },
 
     otherKeyboardButton: {
@@ -1068,6 +1076,35 @@ local fonts = import 'Fonts.libsonnet';
       params: {
         action: 'dismissKeyboard',
         systemImageName: 'chevron.down',
+      },
+    },
+
+    // 返回上一个使用的键盘
+    returnLastKeyboardButton: {
+      name: 'returnLastKeyboardButton',
+      params: {
+        text: '返回',
+        action: 'returnLastKeyboard',
+      },
+    },
+
+    // 数字键盘符号列表
+    numericSymbolsCollection: {
+      name: 'numericSymbolsCollection',
+      params: {
+        type: 'numericSymbols',
+        insets: { top: 8, left: 4, bottom: 4, right: 4 },
+        backgroundStyle: 'systemButtonBackgroundStyle',
+      },
+    },
+
+    // 数字键盘横向时全部部分视图
+    numericCategorySymbolCollection: {
+      name: 'numericCategorySymbolCollection',
+      params: {
+        type: 'categorySymbols',
+        insets: { top: 4, left: 4, bottom: 4, right: 4 },
+        backgroundStyle: 'systemButtonBackgroundStyle',
       },
     },
   },

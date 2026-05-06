@@ -3,6 +3,9 @@ local iPadPinyin = import 'Components/iPadPinyin.libsonnet';
 local iPhoneNumeric = import 'Components/iPhoneNumeric.libsonnet';
 local iPhonePinyin = import 'Components/iPhonePinyin.libsonnet';
 local iPhoneSymbolic = import 'Components/iPhoneSymbolic.libsonnet';
+// NumPad
+local landscapeNumeric = import 'Components/LandscapeNumeric.libsonnet';
+local portraitNumeric = import 'Components/PortraitNumeric.libsonnet';
 
 // 是否添加分号键
 local addSemicolon = false;
@@ -46,6 +49,15 @@ local iPadNumericLandscapeName = 'iPadNumericLandscape';
 local lightIpadNumericLandscapeContent = iPadNumeric.new(isDark=false, isPortrait=false);
 local darkIpadNumericLandscapeContent = iPadNumeric.new(isDark=true, isPortrait=false);
 
+// NumPad
+local portraitNumericFileName = 'portraitNumeric';
+local lightPortraitNumericFileContent = portraitNumeric.new(isDark=false, isPortrait=true);
+local darkPortraitNumericFileContent = portraitNumeric.new(isDark=true, isPortrait=true);
+
+local landscapeNumericFileName = 'landscapeNumeric';
+local lightLandscapeNumericFileContent = landscapeNumeric.new(isDark=false, isPortrait=false);
+local darkLandscapeNumericFileContent = landscapeNumeric.new(isDark=true, isPortrait=false);
+
 local config = {
   pinyin: {
     iPhone: {
@@ -80,6 +92,18 @@ local config = {
       portrait: iPadPinyinPortraitName,
       landscape: iPadPinyinLandscapeName,
       floating: symbolicPortraitFileName,
+    },
+  },
+
+  numpad: {
+    iPhone: {
+      portrait: portraitNumericFileName,
+      landscape: landscapeNumericFileName,
+    },
+     iPad: {
+      portrait: portraitNumericFileName,
+      landscape: landscapeNumericFileName,
+      floating: portraitNumericFileName,
     },
   },
 };
@@ -120,4 +144,10 @@ local config = {
   ['dark/' + iPadNumericPortraitName + '.yaml']: std.toString(darkIpadNumericPortraitContent),
   ['light/' + iPadNumericLandscapeName + '.yaml']: std.toString(lightIpadNumericLandscapeContent),
   ['dark/' + iPadNumericLandscapeName + '.yaml']: std.toString(darkIpadNumericLandscapeContent),
+
+  // NumPad 键盘
+  ['light/' + portraitNumericFileName + '.yaml']: std.toString(lightPortraitNumericFileContent),
+  ['dark/' + portraitNumericFileName + '.yaml']: std.toString(darkPortraitNumericFileContent),
+  ['light/' + landscapeNumericFileName + '.yaml']: std.toString(lightLandscapeNumericFileContent),
+  ['dark/' + landscapeNumericFileName + '.yaml']: std.toString(darkLandscapeNumericFileContent),
 }
